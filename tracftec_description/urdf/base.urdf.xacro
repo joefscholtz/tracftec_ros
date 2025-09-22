@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="inertial_macros.urdf.xacro"/>
+
+	<xacro:macro name="base" params="name parent *origin">
+
+    <joint name="${name}_joint" type="fixed">
+			<parent link="${parent}"/>
+			<child link="${name}"/>
+			<xacro:insert_block name="origin"/>
+			<axis xyz="0 0 1"/>
+		</joint>
+
+    <link name="${name}">
+			<visual>
+        <origin xyz="0.25 0.0 -0.15" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.17 0.17 0.17" />
+          </geometry>
+			</visual>
+			<collision>
+        <origin xyz="0.25 0.0 -0.15" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.17 0.17 0.17" />
+          </geometry>
+			</collision>
+      <xacro:inertial_box_decentered mass="300" x="0.17" y="0.17" z="0.17"> <!-- TODO replace with real values -->
+          <origin xyz="0.25 0.0 -0.15" rpy="0 0 0"/>
+      </xacro:inertial_box_decentered>
+		</link>
+
+	</xacro:macro>
+</robot>

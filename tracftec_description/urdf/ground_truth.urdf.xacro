@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+	
+	<xacro:arg name="ignition" default="false"/>
+	
+	<gazebo>
+		<!-- Gazebo Cassic -->
+		<xacro:unless value="$(arg ignition)">
+			<plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+				<frame_name>base_link</frame_name>
+				<body_name>base_link</body_name>
+				<ros>
+					<remapping>odom:=ground_truth</remapping>
+				</ros>
+				<!--update_rate>100</update_rate-->
+			</plugin>
+		</xacro:unless>
+		<!-- Gazebo Ignition -->
+		<xacro:if value="$(arg ignition)">
+			<!-- Publish Ignition (not ROS!) topics -->
+			<plugin filename="ignition-gazebo-odometry-publisher-system" name="ignition::gazebo::systems::OdometryPublisher">
+				<dimensions>3</dimensions>
+				<odom_frame>ground_truth</odom_frame>
+				<xyz_offset>0.0 0.0 0.0</xyz_offset>
+				<rpy_offset>0.0 0.0 0.0</rpy_offset>
+				<gaussian_noise>0.0</gaussian_noise>
+				<robot_base_frame>base_link</robot_base_frame>
+			</plugin>
+		</xacro:if>
+	</gazebo>
+
+</robot>
