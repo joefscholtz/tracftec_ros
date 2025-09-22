@@ -10,11 +10,11 @@ from launch_ros.descriptions import ParameterValue
 
 def generate_launch_description():
 
-    trafctec_description = get_package_share_path("trafctec_description")
+    tracftec_description = get_package_share_path("tracftec_description")
 
     use_sim_time = LaunchConfiguration("use_sim_time")
 
-    xacro_file = trafctec_description / "urdf" / "iplow.urdf.xacro"
+    xacro_file = tracftec_description / "urdf" / "tracftec.urdf.xacro"
     robot_description_config = ParameterValue(
         Command(
             [

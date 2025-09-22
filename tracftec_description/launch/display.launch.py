@@ -9,7 +9,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    trafctec_description = get_package_share_path("trafctec_description")
+    tracftec_description = get_package_share_path("tracftec_description")
 
     use_sim_time = LaunchConfiguration("use_sim_time")
     publish_robot_state = LaunchConfiguration("publish_robot_state")
@@ -18,7 +18,7 @@ def generate_launch_description():
 
     robot_state_publisher_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            str(trafctec_description / "launch" / "robot_state_publisher.launch.py")
+            str(tracftec_description / "launch" / "robot_state_publisher.launch.py")
         ),
         launch_arguments={
             "use_sim_time": use_sim_time,
@@ -59,7 +59,7 @@ def generate_launch_description():
             ),
             DeclareLaunchArgument(
                 "rviz_config",
-                default_value=str(trafctec_description / "rviz" / "display.rviz"),
+                default_value=str(tracftec_description / "rviz" / "display.rviz"),
                 description="Path to rviz config file",
             ),
             DeclareLaunchArgument(
