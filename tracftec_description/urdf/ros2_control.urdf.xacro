@@ -46,7 +46,7 @@
 
     <gazebo>
       <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-        <parameters>$(find trafctec_description)/config/gazebo_ros2_control.yaml</parameters>
+        <parameters>$(find tracftec_description)/config/gazebo_ros2_control.yaml</parameters>
       </plugin>
     </gazebo>
   </xacro:if>

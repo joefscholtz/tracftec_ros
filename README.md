@@ -1,4 +1,4 @@
-# Trafc Tec ROS 2
+# Tracf Tec ROS 2
 
 Navigation with in ROS 2. Tested with ROS Jazzy on Ubuntu 24.04 Jammy Jellyfish. This is a meta-package containing the following ROS 2 packages:
 

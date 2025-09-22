@@ -17,12 +17,12 @@
     <link name="${name}_pivot">
 			<visual>
 				<geometry>
-					<mesh filename="file://$(find trafctec_description)/meshes/left_caster_pivot.stl"/>
+					<mesh filename="file://$(find tracftec_description)/meshes/left_caster_pivot.stl"/>
 				</geometry>
 			</visual>
 			<collision>
 				<geometry>
-					<mesh filename="file://$(find trafctec_description)/meshes/left_caster_pivot.stl"/>
+					<mesh filename="file://$(find tracftec_description)/meshes/left_caster_pivot.stl"/>
 				</geometry>
 			</collision>
       <xacro:inertial_box mass="0.05" x="0.17" y="0.00625" z="0.8"/> <!-- TODO replace shoulder axis mass with real value -->
@@ -38,12 +38,12 @@
     <link name="${name}_wheel">
 			<visual>
 				<geometry>
-					<mesh filename="file://$(find trafctec_description)/meshes/left_caster_wheel.stl"/>
+					<mesh filename="file://$(find tracftec_description)/meshes/left_caster_wheel.stl"/>
 				</geometry>
 			</visual>
 			<collision>
 				<geometry>
-					<mesh filename="file://$(find trafctec_description)/meshes/left_caster_wheel.stl"/>
+					<mesh filename="file://$(find tracftec_description)/meshes/left_caster_wheel.stl"/>
 				</geometry>
 			</collision>
       <xacro:inertial_box mass="0.05" x="0.17" y="0.00625" z="0.8"/> <!-- TODO replace shoulder axis mass with real value -->

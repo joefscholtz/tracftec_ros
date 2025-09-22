@@ -23,7 +23,7 @@ install:
   cd ../src
   git clone https://github.com/Livox-SDK/livox_ros_driver2.git livox_ros_driver2
   rm livox_ros_driver2/build.sh
-  cp trafctec_ros/build_livox_ros_driver2.sh livox_ros_driver2/build.sh
+  cp tracftec_ros/build_livox_ros_driver2.sh livox_ros_driver2/build.sh
   cd livox_ros_driver2
   ./build.sh humble
   touch COLCON_IGNORE
@@ -53,18 +53,18 @@ build:
   colcon build --symlink-install
 
 display:
-  ros2 launch trafctec_description display.launch.py
+  ros2 launch tracftec_description display.launch.py
 
 
 simulate:
-  ros2 launch trafctec_simulation gazebo.launch.py
+  ros2 launch tracftec_simulation gazebo.launch.py
 
 only-map:
-  ros2 launch trafctec_navigation rtabmap_map_sim_lidar.launch.py
+  ros2 launch tracftec_navigation rtabmap_map_sim_lidar.launch.py
 
 map args='use_sim_time:=true':
   @echo "Use 'just navigate use_sim_time=true' when using the real robot."
-  ros2 launch trafctec_navigation bringup.launch.py localization:=false {{args}}
+  ros2 launch tracftec_navigation bringup.launch.py localization:=false {{args}}
 
 map-real: (map "use_sim_time:=false")
 
@@ -72,22 +72,22 @@ save-map:
   ros2 run nav2_map_server map_saver_cli
 
 locate:
-  ros2 launch trafctec_navigation rtabmap_loc_sim_lidar.launch.py
+  ros2 launch tracftec_navigation rtabmap_loc_sim_lidar.launch.py
 
 navigate args='use_sim_time:=true':
   @echo "Use 'just navigate use_sim_time=true' when using the real robot."
-  ros2 launch trafctec_navigation bringup.launch.py {{args}}
+  ros2 launch tracftec_navigation bringup.launch.py {{args}}
 
 navigate-real: (navigate "use_sim_time:=false output_topic:=\\cmd_vel")
 
 mid:
-  ros2 launch trafctec_bringup MID360.launch.py use_sim_time:=false
+  ros2 launch tracftec_bringup MID360.launch.py use_sim_time:=false
 
 teleop:
-  ros2 run trafctec_bringup teleop_twist_keyboard.sh
+  ros2 run tracftec_bringup teleop_twist_keyboard.sh
 
 view-frames:
   cd ./log && ros2 run tf2_tools view_frames
 
 sync:
-    @bash ./src/trafctec_ros/sync_justfile.sh
+    @bash ./src/tracftec_ros/sync_justfile.sh
